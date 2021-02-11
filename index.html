@@ -1,0 +1,40 @@
+<head>
+    <meta charset = "UTF-8" />
+    <title>The Game of Life</title>
+    <link rel="stylesheet" href="life.css">    
+</head>
+<body>
+
+    <h1>Game of Life simulator</h1>
+<div id="gridContainer">
+    
+</div>
+
+<div class="controls">
+    <button class="btn" id="start"><span>Spustit</span></button>
+    <button class="btn" id="step"><span>Krokuj</span></button>
+    <button class="btn" id="clear"><span>Vymazat</span></button>
+    <button class="btn" id="random"><span>Náhodně</span></button>
+</div>
+
+
+<p>Krok číslo: <span id="stepid">0</span></p>
+
+
+<div class="box">
+<b>Inicializace JSON hodnotou (z programu) </b>
+<p><textarea id="initVal" placeholder="JSON values from script" style="width: 100%"></textarea></p>
+
+<button class="btn" id="initval"><span>Inicializovat</span></button>
+</div>
+
+<div class=box>
+<b>Export aktuálního stavu programu (C)</b>
+
+<pre id="encoded">??</pre>
+
+</div>
+
+<script src="code.js"></script>
+    
+</body>
