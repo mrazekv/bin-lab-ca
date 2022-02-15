@@ -5,6 +5,8 @@ Pro ladění řešení máte připravený [online simulátor](https://ehw.fit.vu
 
 
 ## Příprava
+Vaším úkolem bude modifikovat výpočet fitness funkce tak, aby funkce řešila úkol majority. Nejlepší fitness tak budou mít pravidla, která vedou nejblíže k majoritě. Budete zasahovat zejména do souboru [simulator.hpp](simulator.hpp). 
+
 Doplňte určení pravidla pro dvoj- a trojokolí v simulátoru. Například pro buňky `00101`, kdy uprostřed je buňka, pro kterou počítáme výsledek s indexem `cell` a LSB (1) je buňka nejvíc __nalevo__ od hledané buňky (s indexem `cell - 2`), vrátíte `buffer[future][cell] = indiv->getRule(0b00101);`.
 
 Dále doplníte výpočet fitness funkce. Simulace jednoho počátečního stavu `state` probíhá tak, že do 1D pole `buffer[0]` nahrajeme počáteční stav `data[state]`. Dále pro fixní počet kroků `step` pro každou buňku pomocí přechodových pravidel vypočítáme výsledek do `buffer[1]`. Okrajové buňky jsou řešeny tak, že dochází __k replikaci krajních buněk__.
