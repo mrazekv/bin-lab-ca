@@ -79,6 +79,13 @@ V tomto cvičení budete hledat přechodová pravidla pro 1D celulární automat
 
 Pro ladění řešení máte připravený [online simulátor](https://ehw.fit.vutbr.cz/bin-lab-ca/), kam můžete nakopírovat vypsaného jedince ve formátu JSON (`std::cout << population[0] << std::endl`). Poté můžete simulovat chování.
 
+Můžete začít tím, že si stáhnete všechny potřebné soubory. Kostra projektu je odladěná pro Linuxové systémy a měly by fungovat na školních serverech.
+
+```
+git clone https://github.com/mrazekv/bin-lab-ca.git
+cd bin-lab-ca
+```
+
 
 ## Příprava
 Vaším úkolem bude modifikovat výpočet fitness funkce tak, aby funkce řešila úkol majority. Nejlepší fitness tak budou mít pravidla, která vedou nejblíže k majoritě. Budete zasahovat zejména do souboru [simulator.hpp](simulator.hpp). 
