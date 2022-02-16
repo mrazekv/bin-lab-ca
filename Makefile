@@ -1,9 +1,11 @@
-CPP=g++
-CPPFLAGS=-Wall -std=gnu++11
+CXXFLAGS=--std=c++14 -Wall -O3 -march=native
+HEADERS=${wildcard *.hpp}
 
-all: ca_gp
-ca_gp: ca_gp.cpp ca_sim.hpp
-	$(CPP) $(CPPFLAGS) -o $@ $^
+.PHONY=clean
+all: ca_majority
 
-pack:
-	zip bin_lab3.zip ca_gp.cpp ca_sim.hpp Makefile
+ca_majority: ca_majority.cpp ${HEADERS}
+	${CXX} ${CXXFLAGS} ca_majority.cpp -o $@
+
+clean:
+	rm ca_majority
