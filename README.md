@@ -31,7 +31,7 @@ U 2D celulárních automatů se používají nejčastěji tyto dva typy sousedst
 * Von Neumannovo - zahrnuje bezprostředního horního, dolního, levého a pravého souseda dané buňky a tuto buňku samotnou (obrázek 2.2b).
 * Moorovo - zahrnuje buňky von Neumannova sousedství a navíc bezprostřední sousedy buňky v diagonálních směrech (obrázek 2.2c).
 
-[[File:Ca neigh.png]]
+![Ca neigh.png](files/Ca_neigh.png)
 Obrázek 2.2: Typy sousedství celulárních automatů
 
 ## Hra života (Conway's Game of Life)
