@@ -39,6 +39,8 @@ public:
             int current = 0;
             int future = 1;
 
+            int state_fitness;
+
             buffer[current] = data[state]; // Fill 
 
             // @TODO: state-dependend parameter initialization (e.g., best fitness)
@@ -68,6 +70,7 @@ public:
 
                     buffer[future][cell] = indiv->getRule(ruleId);
                 }
+                // store the fitness to variable state_fitness
 
                 // @TODO: task 1
 
@@ -77,7 +80,7 @@ public:
                 current ^= 1;
                 future ^= 1;
             } /* foreach step */
-
+            fit += state_fitness;
         } /* foreach state */
         
         fitness = fit; // store last fitness
