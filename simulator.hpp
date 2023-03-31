@@ -39,11 +39,11 @@ public:
             int current = 0;
             int future = 1;
 
-            int state_fitness;
+            int state_fitness = 0; // fitness of current state
 
             buffer[current] = data[state]; // Fill 
 
-            // @TODO: state-dependend parameter initialization (e.g., best fitness)
+            // @TODO: state-dependend parameter initialization (e.g., best fitness) (if needed)
 
 
             // Run the simulation for `steps` steps
@@ -58,9 +58,9 @@ public:
                     if (indiv->neighbours == 1)
                     {
                         ruleId =
-                            (buffer[current][std::max(0, (cell - 1))] & 0x01) |
-                            (buffer[current][cell] & 0x01) << 1 |
-                            (buffer[current][std::min(cells - 1, (cell + 1))] & 0x01) << 2;
+                            (buffer[current][std::max(0, (cell - 1))] & 0x01) |    // cell - 1    * 1   (+ checks)
+                            (buffer[current][cell] & 0x01) << 1 |                  // cell * 2  (+ checks)
+                            (buffer[current][std::min(cells - 1, (cell + 1))] & 0x01) << 2;  // cell + 1 * 4 (+ checks)
                     }
                     // @TODO: neighborhood calculation 
                     else
@@ -70,17 +70,29 @@ public:
 
                     buffer[future][cell] = indiv->getRule(ruleId);
                 }
-                // store the fitness to variable state_fitness
+                
+                // calculate the row_fitness: how many cells in the future buffer
+                // has the same value as the majority of a vector data[state]. To 
+                // avoid a calculation in all steps, this value is stored in expected[state]
+                // include the bonus if all cells have same (correct) value.
+                
+                // @TODO
+                
+                // store the row_fitness to variable state_fitness
 
-                // @TODO: task 1
+                // @TODO: task 1: state_fitness = maximum of all row_fitnesses
 
-                // @TODO: task 2
+                // @TODO: task 2: update the previous code to handle only the stable state
 
                 // Switch current and future buffers
                 current ^= 1;
                 future ^= 1;
             } /* foreach step */
             fit += state_fitness;
+            
+            // some statistics:
+            if(state_fitness >= cells) this->validStates++;
+            if(buffer[current] == buffer[future]) this->stableStates++;
         } /* foreach state */
         
         fitness = fit; // store last fitness
