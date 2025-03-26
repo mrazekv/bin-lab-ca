@@ -77,7 +77,7 @@ pohybující se vzory, které za sebou nechávají stopu
 # Samostatná práce
 V tomto cvičení budete hledat přechodová pravidla pro 1D celulární automat, který bude řešit problém __majority__. Genetický algoritmus ve variantě (μ+λ) (neboli μ rodičů a λ potomků) již máte připravený. Vaším úkolem bude doplnit simulátor, který pro daného jedince `Individual` spočítá jeho fitness hodnotu. Evoluční algoritmus se bude snažit tuto fitness maximalizovat.
 
-Pro ladění řešení máte připravený [online simulátor](https://ehw.fit.vutbr.cz/bin-lab-ca/), kam můžete nakopírovat vypsaného jedince ve formátu JSON (`std::cout << population[0] << std::endl`). Poté můžete simulovat chování.
+Pro ladění řešení máte připravený [online simulátor](http://mrazekv.github.io/bin-ca-sim), kam můžete nakopírovat vypsaného jedince ve formátu JSON (`std::cout << population[0] << std::endl`). Poté můžete simulovat chování.
 
 Můžete začít tím, že si stáhnete všechny potřebné soubory. Kostra projektu je odladěná pro Linuxové systémy a měly by fungovat na školních serverech.
 
