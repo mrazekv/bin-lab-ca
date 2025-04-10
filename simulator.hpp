@@ -101,7 +101,7 @@ public:
 
                 // @TODO: task 2: update the previous code to handle only the stable state
 
-                // @TODO: task 3: remove the bonus for the stable state
+                // @TODO: task 3: remove the bonus (*10) for the valid states (all cells have the same valid value )
 
                 // Switch current and future buffers
                 current ^= 1;
