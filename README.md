@@ -110,10 +110,12 @@ Navrhněte fitness tak, že pro všechy stavy simulujete všechny kroky. Vypoč�
 
 
 ## Úkol 2: stabilní řešení
-Upravte výpočet fitness tak, že počítáte pouze stabilní CA (tj. poslední dva stavy jsou stejné, porovnávat můžete pomocí `std::equal`). Pro stabilní stav vypočtěte fitness stavu podle počtu buněk shodných s očekávanou hodnotou. Pokud jsou všechny stejné a odpovídají očekávané, přičtěte bonus. Pokud se neskončilo stabilní konfigurací, k fitness nic nepřičítejte.
+Upravte výpočet fitness tak, že počítáte pouze stabilní CA (tj. poslední dva stavy jsou stejné, porovnávat můžete pomocí `vect1 == vect2` (vzhledem k tomu, že se jedná o `std::vector<int>`) ). Pro stabilní stav vypočtěte fitness stavu podle počtu buněk shodných s očekávanou hodnotou. Pokud jsou všechny stejné a odpovídají očekávané, přičtěte bonus. Pokud se neskončilo stabilní konfigurací, k fitness nic nepřičítejte.
 
 ### Otázky:
 - Podařilo se dosáhnout vysoké fitness?
 
-## Úko 3: odstranění bonusu
+## Úkol 3: odstranění bonusu
+Upravte variantu z úkolu 2 (se stabilním stavem) tak, že odstraníte bonus.
+
 - Co by se stalo, __pokud by nebyl zaveden bonus__?
