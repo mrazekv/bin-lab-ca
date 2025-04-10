@@ -90,9 +90,7 @@ cd bin-lab-ca
 ## Příprava
 Vaším úkolem bude modifikovat výpočet fitness funkce tak, aby funkce řešila úkol majority. Nejlepší fitness tak budou mít pravidla, která vedou nejblíže k majoritě. Budete zasahovat zejména do souboru [simulator.hpp](simulator.hpp). 
 
-Doplňte určení pravidla pro dvoj- a trojokolí v simulátoru. Například pro buňky `00101`, kdy uprostřed je buňka, pro kterou počítáme výsledek s indexem `cell` a LSB (1) je buňka nejvíc __nalevo__ od hledané buňky (s indexem `cell - 2`), vrátíte `buffer[future][cell] = indiv->getRule(0b00101);`.
-
-Dále doplníte výpočet fitness funkce. Simulace jednoho počátečního stavu `state` probíhá tak, že do 1D pole `buffer[0]` nahrajeme počáteční stav `data[state]`. Dále pro fixní počet kroků `step` pro každou buňku pomocí přechodových pravidel vypočítáme výsledek do `buffer[1]`. Okrajové buňky jsou řešeny tak, že dochází __k replikaci krajních buněk__.
+Doplníte výpočet fitness funkce. Simulace jednoho počátečního stavu `state` probíhá tak, že do 1D pole `buffer[0]` nahrajeme počáteční stav `data[state]`. Dále pro fixní počet kroků `step` pro každou buňku pomocí přechodových pravidel vypočítáme výsledek do `buffer[1]`. Okrajové buňky jsou řešeny tak, že dochází __k replikaci krajních buněk__.
 
 Na závěr každého kroku prohodíme 1D pole (řešeno indexy `current` a `future`).
 
@@ -103,7 +101,7 @@ make
 ```
 
 ## Úkol 1: základní fitness
-Navrhněte fitness tak, že pro všechy stavy simulujete všechny kroky. Vypočítáte, kolik buněk v _nejlepším kroku_ odpovídalo očekávané hodnotě definované v `expected[state]`. Pokud úplně všechny buňky odpovídaly očekávané hodnotě, nepřičítejte do fitness pouze číslo `cells`, ale zaveďte bonus `10 * cells`. Také můžete inkrementovat hodnotu `validStates` pro statistiku.
+Navrhněte fitness tak, že pro všechy stavy simulujete všechny kroky. Vypočítáte, kolik buněk v _nejlepším kroku_ odpovídalo očekávané hodnotě definované v `expected[state]`. Pokud úplně všechny buňky odpovídaly očekávané hodnotě, nepřičítejte do fitness pouze číslo `cells`, ale zaveďte bonus `10 * cells`. 
 
 ### Otázky:
 - Podařilo se dosáhnout vysoké fitness?
@@ -116,4 +114,6 @@ Upravte výpočet fitness tak, že počítáte pouze stabilní CA (tj. poslední
 
 ### Otázky:
 - Podařilo se dosáhnout vysoké fitness?
-- Co by se stalo, pokud by nebyl zaveden bonus?
+
+## Úko 3: odstranění bonusu
+- Co by se stalo, __pokud by nebyl zaveden bonus__?

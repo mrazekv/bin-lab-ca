@@ -25,6 +25,8 @@ public:
         this->generateRandomStates();
     }
 
+
+
     int simulate(Individual *indiv)
     {
         int fit = 0;
@@ -43,8 +45,6 @@ public:
 
             buffer[current] = data[state]; // Fill 
 
-            // @TODO: state-dependend parameter initialization (e.g., best fitness) (if needed)
-
 
             // Run the simulation for `steps` steps
             for (int step = 0; step < this->steps; step++)
@@ -58,14 +58,31 @@ public:
                     if (indiv->neighbours == 1)
                     {
                         ruleId =
-                            (buffer[current][std::max(0, (cell - 1))] & 0x01) |    // cell - 1    * 1   (+ checks)
-                            (buffer[current][cell] & 0x01) << 1 |                  // cell * 2  (+ checks)
-                            (buffer[current][std::min(cells - 1, (cell + 1))] & 0x01) << 2;  // cell + 1 * 4 (+ checks)
+                            (buffer[current][this->getCellID(cell - 1)]) |      // cell - 1    * 1   (+ checks)
+                            (buffer[current][cell]) << 1 |                      // cell        * 2  (+ checks)
+                            (buffer[current][this->getCellID(cell + 1)]) << 2;  // cell + 1    * 4 (+ checks)
                     }
-                    // @TODO: neighborhood calculation 
+                    else if (indiv->neighbours == 2) {
+                        ruleId =
+                            (buffer[current][this->getCellID(cell - 2)]) |  
+                            (buffer[current][this->getCellID(cell - 1)]) << 1 | 
+                            (buffer[current][cell]) << 2 |
+                            (buffer[current][this->getCellID(cell + 1)]) << 3 |
+                            (buffer[current][this->getCellID(cell + 2)]) << 4;
+                    } 
+                    else if (indiv->neighbours == 3) {
+                        ruleId =
+                            (buffer[current][this->getCellID(cell - 3)]) |  
+                            (buffer[current][this->getCellID(cell - 2)]) << 1|  
+                            (buffer[current][this->getCellID(cell - 1)]) << 2 | 
+                            (buffer[current][cell]) << 3 |
+                            (buffer[current][this->getCellID(cell + 1)]) << 4 |
+                            (buffer[current][this->getCellID(cell + 2)]) << 5 |
+                            (buffer[current][this->getCellID(cell + 3)]) << 6;
+                    }
                     else
                     {
-                        throw std::logic_error("Not implemented yet");
+                        throw std::logic_error("Invalid number of neighbours");
                     }
 
                     buffer[future][cell] = indiv->getRule(ruleId);
@@ -83,6 +100,8 @@ public:
                 // @TODO: task 1: state_fitness = maximum of all row_fitnesses
 
                 // @TODO: task 2: update the previous code to handle only the stable state
+
+                // @TODO: task 3: remove the bonus for the stable state
 
                 // Switch current and future buffers
                 current ^= 1;
@@ -127,6 +146,15 @@ private:
 
             expected[i] = sum * 2 > this->cells; // calculated majority
         }
+    }
+
+    inline int getCellID(int pos) {
+        if (pos < 0)
+            return 0;
+        else if (pos >= this->cells)
+            return this->cells - 1;
+        else
+            return pos;
     }
 
     int states;
