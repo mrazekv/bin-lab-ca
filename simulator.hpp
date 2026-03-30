@@ -25,8 +25,7 @@ public:
         this->generateRandomStates();
     }
 
-
-
+    
     int simulate(Individual *indiv)
     {
         int fit = 0;
@@ -35,16 +34,16 @@ public:
         this->validStates = 0;
         this->stableStates = 0;
 
+        // Run the simulation for `steps` steps
         for (int state = 0; state < this->states; state++)
         {
             // IDs of buffers, each step the IDs are switched
             int current = 0;
             int future = 1;
 
-            int state_fitness = 0; // fitness of current state
-
             buffer[current] = data[state]; // Fill 
 
+            int state_fitness = 0; // fitness of current state
 
             // Run the simulation for `steps` steps
             for (int step = 0; step < this->steps; step++)
@@ -87,14 +86,11 @@ public:
 
                     buffer[future][cell] = indiv->getRule(ruleId);
                 }
-                
                 // calculate the row_fitness: how many cells in the future buffer
                 // has the same value as the majority of a vector data[state]. To 
                 // avoid a calculation in all steps, this value is stored in expected[state]
                 // include the bonus if all cells have same (correct) value.
-                
-                // @TODO
-                
+
                 // store the row_fitness to variable state_fitness
 
                 // @TODO: task 1: state_fitness = maximum of all row_fitnesses
@@ -107,13 +103,15 @@ public:
                 current ^= 1;
                 future ^= 1;
             } /* foreach step */
+
             fit += state_fitness;
-            
+
             // some statistics:
             if(state_fitness >= cells) this->validStates++;
             if(buffer[current] == buffer[future]) this->stableStates++;
+
         } /* foreach state */
-        
+
         fitness = fit; // store last fitness
         return fit;
     }
